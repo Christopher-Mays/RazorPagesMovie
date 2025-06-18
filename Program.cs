@@ -11,6 +11,8 @@ builder.Services.AddDbContext<RazorPagesMovieContext>(options =>
 
 var app = builder.Build();
 
+string bearerToken = "b0847ec3dcc4d1a3f7b158f328aaba78";
+
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -30,6 +32,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
+
+
 
 app.UseAuthorization();
 

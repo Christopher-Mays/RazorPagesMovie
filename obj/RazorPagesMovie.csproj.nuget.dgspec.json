@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\christopher.mays\\Documents\\.net and c#\\RazorPagesMovie\\RazorPagesMovie.csproj": {}
+    "c:\\Users\\christopher.mays\\Documents\\.net and c#\\RazorPagesMovie\\RazorPagesMovie.csproj": {}
   },
   "projects": {
-    "C:\\Users\\christopher.mays\\Documents\\.net and c#\\RazorPagesMovie\\RazorPagesMovie.csproj": {
+    "c:\\Users\\christopher.mays\\Documents\\.net and c#\\RazorPagesMovie\\RazorPagesMovie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\christopher.mays\\Documents\\.net and c#\\RazorPagesMovie\\RazorPagesMovie.csproj",
+        "projectUniqueName": "c:\\Users\\christopher.mays\\Documents\\.net and c#\\RazorPagesMovie\\RazorPagesMovie.csproj",
         "projectName": "RazorPagesMovie",
-        "projectPath": "C:\\Users\\christopher.mays\\Documents\\.net and c#\\RazorPagesMovie\\RazorPagesMovie.csproj",
+        "projectPath": "c:\\Users\\christopher.mays\\Documents\\.net and c#\\RazorPagesMovie\\RazorPagesMovie.csproj",
         "packagesPath": "C:\\Users\\christopher.mays\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\christopher.mays\\Documents\\.net and c#\\RazorPagesMovie\\obj\\",
+        "outputPath": "c:\\Users\\christopher.mays\\Documents\\.net and c#\\RazorPagesMovie\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\christopher.mays\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -67,6 +67,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "TheMovieDbWrapper": {
+              "target": "Package",
+              "version": "[1.3.1, )"
             }
           },
           "imports": [
