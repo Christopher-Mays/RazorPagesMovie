@@ -2,7 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using RazorPagesMovie.Data;
 using RazorPagesMovie.Models;
+ // Add this at the top with other using statements
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -11,7 +13,9 @@ builder.Services.AddDbContext<RazorPagesMovieContext>(options =>
 
 var app = builder.Build();
 
-string bearerToken = "b0847ec3dcc4d1a3f7b158f328aaba78";
+
+
+
 
 using (var scope = app.Services.CreateScope())
 {
@@ -30,6 +34,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles(); // Enables serving wwwroot content
 
 app.UseRouting();
 
@@ -37,8 +42,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
-app.MapRazorPages()
-   .WithStaticAssets();
+//app.MapStaticAssets();
+app.MapRazorPages();
+    //.WithStaticAssets();
 
 app.Run();

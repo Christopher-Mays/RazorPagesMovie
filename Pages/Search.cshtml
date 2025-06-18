@@ -1,0 +1,34 @@
+@page
+@model RazorPagesMovie.Pages.SearchModel
+@{
+    ViewData["Title"] = "Movie Search";
+}
+
+<h2>Search for a Movie</h2>
+
+<form method="get">
+    <input type="text" name="query" value="@Model.Query" placeholder="Enter movie title..." class="form-control" style="max-width: 300px;" />
+    <button type="submit" class="btn btn-primary mt-2">Search</button>
+</form>
+
+@if (Model.SearchResults.Count > 0)
+{
+    <h4 class="mt-4">Results:</h4>
+    <div class="row">
+        @foreach (var movie in Model.SearchResults)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    @if (!string.IsNullOrEmpty(movie.PosterPath))
+                    {
+                        <img src="https://image.tmdb.org/t/p/w500@movie.PosterPath" class="card-img-top" alt="@movie.Title" />
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@movie.Title</h5>
+                        <p class="card-text">@movie.ReleaseDate?.ToString("yyyy")</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

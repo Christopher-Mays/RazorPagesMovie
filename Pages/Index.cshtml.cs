@@ -1,19 +1,22 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using TMDbLib.Client;
+using TMDbLib.Objects.Movies;
 
 namespace RazorPagesMovie.Pages;
 
 public class IndexModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
+    public string MovieTitle { get; set; } = "";
+    public string PosterUrl { get; set; } = "";
 
-    public IndexModel(ILogger<IndexModel> logger)
+    public async Task OnGetAsync()
     {
-        _logger = logger;
-    }
+        var client = new TMDbClient("b0847ec3dcc4d1a3f7b158f328aaba78");
+        var movie = await client.GetMovieAsync(550); // Fight Club
 
-    public void OnGet()
-    {
-
+        MovieTitle = movie.Title ?? "Unknown Title";
+        PosterUrl = string.IsNullOrEmpty(movie.PosterPath)
+            ? ""
+            : $"https://image.tmdb.org/t/p/w500{movie.PosterPath}";
     }
 }
