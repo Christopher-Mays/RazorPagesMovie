@@ -1,0 +1,30 @@
+@page "{id:int}"
+@model RazorPagesMovie.Pages.AddReviewModel
+@{
+    ViewData["Title"] = "Add Review";
+}
+
+<h2>Add Review for @Model.MovieTitle</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="ReviewText" class="form-label">Your Review</label>
+        <textarea asp-for="ReviewText" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="ReviewText" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Rating" class="form-label">Rating (1-10)</label>
+        <input asp-for="Rating" class="form-control" type="number" min="1" max="10" />
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+
+    <input type="hidden" asp-for="MovieId" />
+
+    <button type="submit" class="btn btn-success">Submit Review</button>
+    <a asp-page="/MovieDetails" asp-route-id="@Model.MovieId" class="btn btn-secondary ms-2">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
