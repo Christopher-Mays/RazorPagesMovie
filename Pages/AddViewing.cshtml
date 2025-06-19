@@ -6,13 +6,15 @@
 
 <h2>Add Viewing</h2>
 
+<div style=" width: 50px" >
 <form method="get">
     <div class="input-group mb-3">
-        <input type="text" name="SearchQuery" class="form-control" placeholder="Search for a movie..." value="@Model.SearchQuery" />
+        <input type="text" name="SearchQuery" class="form-control " placeholder="Search for a movie..." value="@Model.SearchQuery" />
         <button type="submit" class="btn btn-outline-primary">Search</button>
     </div>
-</form>
 
+</form>
+ </div>
 @if (Model.SearchResults?.Any() == true)
 {
     <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
@@ -20,7 +22,17 @@
         {
             <div class="col">
                 <div class="card h-100">
-                    <img src="@($"https://image.tmdb.org/t/p/w500{movie.PosterPath}")" class="card-img-top" alt="@movie.Title" />
+                    @if (!string.IsNullOrEmpty(movie.PosterPath))
+                        {
+                            <img src="@($"https://image.tmdb.org/t/p/w500{movie.PosterPath}")"
+                                 class="card-img-top img-fluid"
+                                 style="max-height: 400px; object-fit: contain; background-color: #6d0303;" />
+                        }
+                        else
+                        {
+                            <img src="https://www.kindpng.com/picc/m/1-10104_download-png-movie-icon-flat-movie-icon-png.png"
+                                 class="card-img-top" />
+                        }
                     <div class="card-body">
                         <h5 class="card-title">@movie.Title</h5>
                         <p class="card-text">@movie.ReleaseDate?.Year</p>

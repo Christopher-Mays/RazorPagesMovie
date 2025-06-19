@@ -1,0 +1,48 @@
+﻿@page
+@model RazorPagesMovie.Pages.AddMovieModel
+@{
+    ViewData["Title"] = "My Movies";
+}
+
+<h2>My Movies</h2>
+
+@if (Model.MyMovies.Count == 0)
+{
+    <p>No movies added yet.</p>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-3 g-4" >
+
+        @foreach (var movie in Model.MyMovies)
+        {
+            <div class="col">
+                <div class="card h-100" style="width: 24rem; height: 24rem;">
+                    <a asp-page="/MovieDetails" asp-route-id="@movie.TmdbId" class="text-decoration-none text-white">
+                    <div class="card-body">
+                        @if (!string.IsNullOrEmpty(movie.PosterPath))
+                        {
+                            <img src="@($"https://image.tmdb.org/t/p/w500{movie.PosterPath}")"
+                                 class="card-img-top img-fluid"
+                                 style="max-height: 400px; object-fit: contain; background-color: #6d0303;" />
+                        }
+                        else
+                        {
+                            <img src="https://www.kindpng.com/picc/m/1-10104_download-png-movie-icon-flat-movie-icon-png.png"
+                                 class="card-img-top" />
+                        }
+                        <h5 class="card-title">@movie.Title</h5>
+                        <p class="card-text">@movie.ReleaseDate.ToShortDateString()</p>
+                        <p class="card-text">@movie.Genre</p>
+                        <p class="card-text">Rating: @movie.Rating</p>
+                    </div>
+                    </a>
+                    <form method="post" asp-page-handler="Delete">
+                        <input type="hidden" name="id" value="@movie.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm w-100">Delete</button>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+}

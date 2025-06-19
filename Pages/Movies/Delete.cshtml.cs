@@ -19,8 +19,8 @@ namespace RazorPagesMovie.Pages_Movies
             _context = context;
         }
 
-        [BindProperty]
-        public Movie Movie { get; set; } = default!;
+[BindProperty]
+public Movie Movie { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

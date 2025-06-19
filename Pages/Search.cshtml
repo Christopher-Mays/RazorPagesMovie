@@ -9,12 +9,12 @@
 <form method="get" class="mb-4">
     <div class="mb-3">
         <label for="query">Title:</label>
-        <input type="text" name="query" value="@Model.Query" class="form-control" />
+        <input type="text" name="query" value="@Model.Query" class="form-control" style="width: 300px;"/>
     </div>
 
     <div class="mb-3">
         <label for="genreId">Genre:</label>
-        <select name="genreId" class="form-select">
+        <select name="genreId" class="form-select mb-3 w-50" style="width: 300px;">
             <option value="">-- Any Genre --</option>
             @foreach (var genre in Model.Genres)
             {
@@ -46,7 +46,7 @@
                         }
                         else
                         {
-                            <img src="https://via.placeholder.com/500x750?text=No+Image"
+                            <img src="https://www.kindpng.com/picc/m/1-10104_download-png-movie-icon-flat-movie-icon-png.png"
                                  class="card-img-top" />
                         }
 

@@ -5,7 +5,13 @@ namespace RazorPagesMovie.Models;
 
 public class Movie
 {
-    public int Id { get; set; }
+    public int? Id { get; set; }
+
+    public int TmdbId { get; set; }
+
+    public string? PosterPath { get; set; }
+
+
 
     [StringLength(60, MinimumLength = 3)]
     [Required]
@@ -28,4 +34,5 @@ public class Movie
     [StringLength(5)]
     [Required]
     public string Rating { get; set; } = string.Empty;
+    
 }

@@ -20,7 +20,7 @@ namespace RazorPagesMovie.Pages
         public List<SearchMovie> SearchResults { get; set; } = new();
 
         [BindProperty]
-        public string SelectedMovieTitle { get; set; }
+        public string? SelectedMovieTitle { get; set; }
 
         [BindProperty]
         public DateTime ViewingDate { get; set; }

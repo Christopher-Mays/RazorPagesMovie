@@ -23,12 +23,20 @@
 
             <a class="btn btn-primary mt-3" asp-page="/AddReview" asp-route-id="@Model.Movie.Id">Add Review</a>
 
+
+            <form method="post" asp-page="/AddMovie" asp-route-id="@Model.Movie.Id">
+                <input type="hidden" name="id" value="@Model.Movie.Id" />
+                <button type="submit" class="btn btn-primary mt-3">Add to My Movies</button>
+            </form>
+
+           
+
+
         </div>
     </div>
 </div>
 @section Scripts {
     <script>
-        // Optional: Add any JavaScript specific to this page
         console.log("Movie Details Page Loaded");
     </script>
 }
