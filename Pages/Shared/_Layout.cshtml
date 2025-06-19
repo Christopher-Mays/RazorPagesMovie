@@ -34,6 +34,37 @@
             </div>
         </nav>
     </header>
+
+
+@* IF YOU WANTED TO MAKE THE BACKGROUNDS OF THE MOVIE IMAGES RESPONSIVE & TAKE ON THE COLOR OF THE MOVIE *@
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
+    <script>
+    window.addEventListener("load", function () {
+        const colorThief = new ColorThief();
+
+        document.querySelectorAll('.movie-poster').forEach(img => {
+            // Wait for image to be loaded
+            if (img.complete) {
+                applyColor(img);
+            } else {
+                img.addEventListener('load', () => applyColor(img));
+            }
+        });
+
+        function applyColor(img) {
+            try {
+                const color = colorThief.getColor(img); // [r, g, b]
+                const rgb = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+                img.parentElement.style.backgroundColor = rgb;
+            } catch (e) {
+                console.warn("Could not extract color", e);
+            }
+        }
+    });
+</script> *@
+
+
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

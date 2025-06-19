@@ -1,12 +1,53 @@
 ﻿@page
 @model RazorPagesMovie.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Popular Movies";
 }
 
-<h2>@Model.MovieTitle</h2>
+<h2>Popular Movies </h2>
 
-@if (!string.IsNullOrEmpty(Model.PosterUrl))
-{
-    <img src="@Model.PosterUrl" alt="Poster" style="max-width:300px;" />
-}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var movie in Model.Movies)
+    {
+        <div class="col">
+            <a asp-page="/MovieDetails" asp-route-id="@movie.Id" style="text-decoration: none; color: inherit;">
+
+            <div class="card h-100">
+                @if (!string.IsNullOrEmpty(movie.PosterPath))
+                {
+                    
+                    <img src="@($"https://image.tmdb.org/t/p/w500{movie.PosterPath}")"
+                 alt="@movie.Title"
+                 class="card-img-top img-fluid"
+                 style="max-height: 400px; object-fit: contain; background-color: #6d0303;" />
+
+                }
+                else
+                {
+                    <img src="https://via.placeholder.com/500x750?text=No+Image" alt="No poster available" class="card-img-top" />
+                }
+
+                <div class="card-body">
+                    <h5 class="card-title">@movie.Title</h5>
+                    <p class="card-text">@movie.ReleaseDate?.Year</p>
+                </div>
+            </div>
+            </a>
+        </div>
+    }
+</div>
+
+
+<div class="d-flex justify-content-between mt-4">
+    <a class="btn btn-outline-secondary @(Model.IsFirstPage ? "disabled" : "")"
+       asp-page="/Index" asp-route-PageNumber="@(Model.PageNumber - 1)">
+        Previous
+    </a>
+
+    <a class="btn btn-outline-primary @(Model.IsLastPage ? "disabled" : "")"
+       asp-page="/Index" asp-route-PageNumber="@(Model.PageNumber + 1)">
+        Next
+    </a>
+</div>
+@* Display the current page number *@
+<p class="mt-3">Current Page: @Model.PageNumber</p>

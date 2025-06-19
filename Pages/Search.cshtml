@@ -21,7 +21,7 @@
                 <div class="card">
                     @if (!string.IsNullOrEmpty(movie.PosterPath))
                     {
-                        <img src="https://image.tmdb.org/t/p/w500@movie.PosterPath" class="card-img-top" alt="@movie.Title" />
+                        <img src="https://image.tmdb.org/t/p/w500@($"{movie.PosterPath}")" alt="@movie.Title" class="card-img-top img-fluid"  style="max-height: 400px; object-fit: contain; background-color: #6d0303;" />
                     }
                     <div class="card-body">
                         <h5 class="card-title">@movie.Title</h5>

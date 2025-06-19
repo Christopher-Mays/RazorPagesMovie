@@ -1,0 +1,33 @@
+@page "{id:int}"
+@model RazorPagesMovie.Pages.MovieDetailsModel
+@{
+    ViewData["Title"] = Model.Movie.Title;
+}
+
+<a asp-page="/Index" class="btn btn-secondary mb-3">← Back to Home</a>
+
+
+<div class="container mt-4">
+    <h2>@Model.Movie.Title (@Model.Movie.ReleaseDate?.Year)</h2>
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <img src="@($"https://image.tmdb.org/t/p/w500{Model.Movie.PosterPath}")"
+                 class="img-fluid" alt="@Model.Movie.Title" />
+        </div>
+        <div class="col-md-8">
+            <p><strong>Overview:</strong></p>
+            <p>@Model.Movie.Overview</p>
+            <p><strong>Rating:</strong> @Model.Movie.VoteAverage / 10</p>
+            <p><strong>Runtime:</strong> @Model.Movie.Runtime minutes</p>
+            <p><strong>Genres:</strong> @string.Join(", ", Model.Movie.Genres.Select(g => g.Name))</p>
+
+            <a class="btn btn-primary mt-3" href="#">Add Review</a>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        // Optional: Add any JavaScript specific to this page
+        console.log("Movie Details Page Loaded");
+    </script>
+}

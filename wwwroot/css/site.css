@@ -29,3 +29,13 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.card {
+    background-color: #363636;
+    color: #ffffff;
+}
