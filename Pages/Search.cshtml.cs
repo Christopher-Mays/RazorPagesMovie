@@ -26,7 +26,7 @@ namespace RazorPagesMovie.Pages
             // Load all genres
             Genres = await client.GetMovieGenresAsync();
 
-            // Case 1: Text search (with optional genre filtering)
+            // search w/ text(title)
             if (!string.IsNullOrWhiteSpace(Query))
             {
             Results = await client.SearchMovieAsync(Query);
@@ -38,10 +38,10 @@ namespace RazorPagesMovie.Pages
                 .ToList();
             }
             }
-            // Case 2: Genre-only search using Discover
+            // search w/ genre (using discover API)
             else if (GenreId.HasValue)
             {
-            // Use Discover API to get movies by genre
+           
             var discoverResults = await client.DiscoverMoviesAsync()
                 .IncludeWithAllOfGenre(new[] { GenreId.Value })
                 .Query();

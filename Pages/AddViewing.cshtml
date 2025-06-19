@@ -1,0 +1,44 @@
+@page
+@model RazorPagesMovie.Pages.AddViewingModel
+@{
+    ViewData["Title"] = "Add Viewing";
+}
+
+<h2>Add Viewing</h2>
+
+<form method="get">
+    <div class="input-group mb-3">
+        <input type="text" name="SearchQuery" class="form-control" placeholder="Search for a movie..." value="@Model.SearchQuery" />
+        <button type="submit" class="btn btn-outline-primary">Search</button>
+    </div>
+</form>
+
+@if (Model.SearchResults?.Any() == true)
+{
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+        @foreach (var movie in Model.SearchResults)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <img src="@($"https://image.tmdb.org/t/p/w500{movie.PosterPath}")" class="card-img-top" alt="@movie.Title" />
+                    <div class="card-body">
+                        <h5 class="card-title">@movie.Title</h5>
+                        <p class="card-text">@movie.ReleaseDate?.Year</p>
+                        <form method="post">
+                            <input type="hidden" name="SelectedMovieTitle" value="@movie.Title" />
+                            <div class="mb-2">
+                                <label for="ViewingDate" class="form-label">Viewing Date & Time</label>
+                                <input type="datetime-local" class="form-control" name="ViewingDate" required />
+                            </div>
+                            <button type="submit" class="btn btn-success">Schedule Viewing</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+@if (Model.SearchResults == null || !Model.SearchResults.Any())
+{
+    <p class="text-muted">No results found. Please try a different search.</p>
+}
